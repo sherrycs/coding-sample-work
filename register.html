@@ -1,0 +1,209 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="form" ng-controller="registerCtrl">
+      <form id="register" class="form-horizontal">
+        <h3 class="text-center">Registration</h3>
+        <h5 class="text-muted text-center">All * fields are required to
+        fill out</h5>
+        <hr/>
+        <div class="col-md-10 col-md-offset-1 formReg">
+          <!-- email -->
+          <div class="form-group">
+            <label for="fieldemail" class="col-sm-4 control-label text-right">Email <strong class="text-danger">*</strong></label>
+            <div class="col-sm-6 text-left">
+              <input type="text" class="form-control" id="fieldemail" maxlength="62" ng-model="newUser.email"/>
+              <p id="email_empty_error" class="error alert alert-danger">Please enter your email.</p>
+              <p id="email_pattern_error" class="error alert alert-danger">This email is invalid.</p>
+              <p id="failed_error" class="error alert alert-danger">Sorry, the email has been registered already.</p>
+            </div>
+          </div>
+          <!--&lt;!&ndash; confirm email &ndash;&gt;-->
+          <!--<div class="form-group">-->
+          <!--<label for="fieldconfirmemail" class="col-sm-4 control-label text-right">Confirm Email <strong class="text-danger">*</strong></label>-->
+          <!--<div class="col-sm-6 text-left">-->
+          <!--<input type="email" class="form-control" id="fieldconfirmemail" ng-model="confirmEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>-->
+          <!--<p id="matchemail_error" class="error alert alert-danger">Please enter the same email as above.</p>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!-- password -->
+          <div class="form-group">
+            <label for="fieldpasswd" class="col-sm-4 control-label text-right">Password <strong class="text-danger">*</strong></label>
+            <div class="col-sm-6 text-left">
+              <input type="password" minlength="6" maxlength="12" class="form-control" id="fieldpasswd" placeholder="6-12 characters, at least one letter and one digit" ng-model="newUser.password"/>
+              <!-- <small class="text-muted">6-12 characters, at least one letter and one digit</small> -->
+              <p id="password_error" class="error alert alert-danger">Please enter 6-12 characters password, at least one letter and one digit.</p>
+            </div>
+          </div>
+          <!-- confirm password -->
+          <div class="form-group">
+            <label for="fieldcfpasswd" class="col-sm-4 control-label text-right">Confirm Password <strong class="text-danger">*</strong></label>
+            <div class="col-sm-6 text-left">
+              <input type="password" minlength="6" maxlength="12" class="form-control" id="fieldcfpasswd" ng-model="confirmPW"/>
+              <p id="match_error" class="error alert alert-danger">Please enter the same password as above.</p>
+            </div>
+          </div>
+          <!-- phone -->
+          <div class="form-group">
+            <label for="fieldcfpasswd" class="col-sm-4 control-label text-right">Phone Number <strong class="text-danger">*</strong></label>
+            <div class="col-sm-6 text-left">
+              <input type="text" class="form-control" maxlength="10" placeholder="10 digits phone number" ng-model="newUser.phoneNumber"/>
+              <p id="phoneNumber_empty_error" class="error alert alert-danger">Please enter your phone number.</p>
+              <p id="phoneNumber_pattern_error" class="error alert alert-danger">Please enter your 10 digits phone number.</p>
+            </div>
+          </div>
+          <!-- first name -->
+          <div class="form-group">
+            <label for="fieldcfpasswd" class="col-sm-4 control-label text-right">First Name <strong class="text-danger">*</strong></label>
+            <div class="col-sm-6 text-left">
+              <input type="text" class="form-control" placeholder="First Name" id="firstname" minlength="1" maxlength="26" ng-model="newUser.firstName" required="required"/>
+              <!-- <small class="text-muted">Please input your real first name to match credit card, or you cannot purchase tickets.</small> -->
+              <p id="firstname_pattern_error" class="error alert alert-danger">Please enter your first name, in letters only.</p>
+              <p id="firstname_empty_error" class="error alert alert-danger">Please enter your first name.</p>
+            </div>
+          </div>
+          <!-- last name -->
+          <div class="form-group">
+            <label for="fieldcfpasswd" class="col-sm-4 control-label text-right">Last Name <strong class="text-danger">*</strong></label>
+            <div class="col-sm-6 text-left">
+              <input type="text" class="form-control" placeholder="Last Name" id="lastname" maxlength="26" ng-model="newUser.lastName" required="required"/>
+              <!-- <small class="text-muted">Please input your real last name to match credit card, or you cannot purchase tickets.</small> -->
+              <p id="lastname_pattern_error" class="error alert alert-danger">Please enter your last name, in letters only.</p>
+              <p id="lastname_empty_error" class="error alert alert-danger">Please enter your last name.</p>
+            </div>
+          </div>
+          <!-- address -->
+          <div class="form-group">
+            <label for="fieldcfpasswd" class="col-sm-4 control-label text-right">Address</label>
+            <div class="col-sm-6 text-left">
+              <input type="text" class="form-control" maxlength="95" ng-model="newUser.address"/>
+              <p id="address_error" class="error alert alert-danger">Please enter a valid address.</p>
+            </div>
+          </div>
+          <!-- city -->
+          <div class="form-group">
+            <label for="fieldcfpasswd" class="col-sm-4 control-label text-right">City</label>
+            <div class="col-sm-6 text-left">
+              <input type="text" class="form-control" maxlength="35" ng-model="newUser.city"/>
+              <p id="city_error" class="error alert alert-danger">Please enter a valid city.</p>
+            </div>
+          </div>
+          <!-- state -->
+          <div class="form-group">
+            <label for="fieldcfpasswd" class="col-sm-4 control-label text-right">State</label>
+            <div class="col-sm-6 text-left">
+              <select class="form-control" ng-model="newUser.state">
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+              </select>
+            </div>
+          </div>
+          <!-- zip -->
+          <div class="form-group">
+            <label for="fieldcfpasswd" class="col-sm-4 control-label text-right">ZIP code</label>
+            <div class="col-sm-6 text-left">
+              <input type="text" class="form-control" maxlength="5"  placeholder="5 digits ZIP code" ng-model="newUser.zip"/>
+              <p id="zip_error" class="error alert alert-danger">Please enter a valid ZIP code.</p>
+            </div>
+          </div>
+          <!-- country -->
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Country: <strong class="text-danger">*</strong> </label>
+            <div class="col-sm-6">
+              <select class="form-control">
+                <option value="USA">USA</option>
+              </select>
+            </div>
+          </div>
+          <!-- agree to terms of service -->
+          <div class="form-group">
+            <label for="fieldcfpasswd" class="col-sm-4 control-label text-right">
+              <input type="checkbox" aria-label="..." ng-model="agreed" >
+            </label>
+            <div class="col-sm-6 text-left">
+              <p><strong class="text-danger">*</strong> I accept and agree to the <a href="https://takebus.com/#/service">Terms of Service</a> of this program and web site.</p>
+              <p id="agree_error" class="error alert alert-danger">Please accept and agree to the <a href="https://takebus.com/#/service">Terms of Service</a> of this program and web site.</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 hidden-xs control-label text-right"></label>
+            <div class="col-sm-6">
+              <button class="btn btn-warning btn-lg btn-block" ng-click="register()" id="btnreg">Register</button>
+              <br/>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--modal: reg-->
+<div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body text-center ">
+        <br/>
+        <h2 class="modal-title text-center text-primary" id="myModalLabel">Congratulations!</h2>
+        <br/>
+        <h4 class="text-primary">You have signed up successfully. <br/>We have also sent you a notification email.</h4>
+        <br/>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/modal: login-->
+<script>
+(function () {
+$('#fieldemail').on('focus', function () {
+$(".alert").fadeOut('fast');
+});
+})();
+</script>
